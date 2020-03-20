@@ -10,13 +10,18 @@ def scrape_all():
 
     news_title, news_paragraph = mars_news(browser)
 
+    # Run all scraping functions and store results in dictionary
     data = {
         'news_title': news_title,
         'news_paragraph': news_paragraph,
         'featured_image': featured_image(browser),
         'facts': mars_facts(),
-        'last_modified': dt.datetime.now()
-    }
+        'last_modified': dt.datetime.now()}
+
+    # End the session
+    browser.quit()
+    
+    return data
 
 def mars_news(browser):
 
@@ -104,10 +109,6 @@ def mars_facts():
     # Convert dataframe into HMTL format, add bootstrap
     return df.to_html()
 
-# Execute cell to end the session
-#browser.quit()
-
 if __name__ == '__main__':
     # If running as script, print scraped data
     print(scrape_all())
-    
