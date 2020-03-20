@@ -64,4 +64,4 @@ df
 df.to_html()
 
 # Execute cell to end the session
-browser.quit()
+#browser.quit()
