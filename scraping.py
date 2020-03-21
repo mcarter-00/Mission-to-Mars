@@ -19,7 +19,7 @@ def scrape_all():
         'last_modified': dt.datetime.now()}
 
     # End the session
-    browser.quit()
+    #browser.quit()
     
     return data
 
