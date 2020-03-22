@@ -16,7 +16,8 @@ def scrape_all():
         'news_paragraph': news_paragraph,
         'featured_image': featured_image(browser),
         'facts': mars_facts(),
-        'last_modified': dt.datetime.now()}
+        'last_modified': dt.datetime.now()
+    }
 
     # End the session
     #browser.quit()
@@ -35,7 +36,6 @@ def mars_news(browser):
     # Set up the HTML parser
     html = browser.html
     news_soup = BeautifulSoup(html, 'html.parser')
-
     slide_elem = news_soup.select_one('ul.item_list li.slide')
     slide_elem.find('div', class_='content_title')
     
@@ -44,7 +44,7 @@ def mars_news(browser):
     
     # Use the parent element to find the paragraph text
     news_p = slide_elem.find('div', class_='article_teaser_body').get_text()
-
+    
     # Add try/except for error handling
     try:
         slide_elem = news_soup.select_one('ul.item_list li.slide')
@@ -103,8 +103,8 @@ def mars_facts():
         return None
 
     # Assign columns and set infex of dataframe
-    df.columns = ['description', 'value']
-    df.set_index('description', inplace=True)
+    df.columns = ['Description', 'Mars', 'Earth']
+    df.set_index('Description', inplace=True)
 
     # Convert dataframe into HMTL format, add bootstrap
     return df.to_html()
