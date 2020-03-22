@@ -14,6 +14,7 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
     mars = mongo.db.mars.find_one()
+    print(mars)
     return render_template('index.html', mars=mars)
 
 # Define the scraping route - aka the "button" of the web app

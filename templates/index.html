@@ -18,7 +18,6 @@
                 <!-- Add a button to activate scraping script -->
                 <p><a class='btn btn-primary btn-lg' href='/scrape' role='button'>Scrape New Data</a></p>
             </div>
-        </div>
 
         <!-- Mars News -->
         <div class='row' id='mars-news'>
@@ -45,7 +44,6 @@
                 class="img-responsive" 
                 alt="Responsive image"
               />          
-            </div>
         
             <!-- Mars Facts -->
             <div class='col-md-4'>
@@ -56,6 +54,23 @@
                     </div>
                 </div>
             </div>
-        </div>          
+            </div>
+        </div>
+        
+        <!-- CHALLENGE: Mars Hemispheres -->
+        <div class='row' id='mars-hemispheres'>
+                <h2>Mars Hemispheres</h1>
+                <ul id = 'mars-hemisphere'>
+                    {% for item in mars.hemisphere_images%}
+                    <li><a href= '{{ item.img_url }}'></a></li>
+                    <img 
+                        src = '{{ item.img_url}}' 
+                        class="img-responsive" 
+                        alt="Responsive image"
+                    />
+                    {% endfor %}
+                </ul>
+        </div>                
+        </div>       
     </body>
 </html>
